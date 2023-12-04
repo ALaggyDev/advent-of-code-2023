@@ -14,6 +14,7 @@ pub fn part_one(input: &str) -> Option<u32> {
         for (x, &ele) in line.iter().enumerate() {
             // is symbol
             if ele != b'.' && !ele.is_ascii_digit() {
+                #[allow(clippy::needless_range_loop)]
                 for s_y in usize::max(y, 1) - 1..=usize::min(y + 1, dim.0 - 1) {
                     for s_x in usize::max(x, 1) - 1..=usize::min(x + 1, dim.1 - 1) {
                         flags[s_y][s_x] = true;
@@ -107,6 +108,7 @@ pub fn part_two(input: &str) -> Option<u32> {
             if ele == b'*' {
                 let mut num_count = 0;
                 let mut ratio = 1;
+                #[allow(clippy::needless_range_loop)]
                 for s_y in usize::max(y, 1) - 1..=usize::min(y + 1, dim.0 - 1) {
                     for s_x in usize::max(x, 1) - 1..=usize::min(x + 1, dim.1 - 1) {
                         if nums[s_y][s_x] != 0 && (s_x == x || nums[s_y][x] == 0) {
